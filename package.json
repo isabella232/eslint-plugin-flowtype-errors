@@ -31,7 +31,7 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.16.0",
-    "core-js": "3.8.1",
+    "core-js": "3.19.0",
     "find-up": "^5.0.0",
     "slash": "^3.0.0"
   },
