@@ -1,0 +1,144 @@
+{
+  "name": "eslint-plugin-flowtype-errors",
+  "version": "4.5.0-pre0.3",
+  "description": "Retrieve Flow errors as ESLint errors.",
+  "author": "Amila Welihinda",
+  "bugs": "https://github.com/amilajack/eslint-plugin-flowtype-errors/issues",
+  "homepage": "https://github.com/amilajack/eslint-plugin-flowtype-errors#readme",
+  "main": "index.js",
+  "scripts": {
+    "flow": "flow",
+    "build": "cross-env NODE_ENV=production babel src --out-dir dist",
+    "lint": "eslint --cache .",
+    "prettier": "prettier --single-quote --write \"./src/*.js\"",
+    "preversion": "yarn build",
+    "spec": "yarn build && jest",
+    "test": "yarn flow && yarn lint && yarn spec"
+  },
+  "repository": "https://github.com/amilajack/eslint-plugin-flowtype-errors",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [
+    "eslint",
+    "flow",
+    "plugin",
+    "errors"
+  ],
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "dependencies": {
+    "@babel/runtime": "^7.16.0",
+    "core-js": "3.8.1",
+    "find-up": "^5.0.0",
+    "slash": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-proposal-class-properties": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-flow": "^7.16.0",
+    "@babel/register": "^7.16.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "chai": "^4.3.4",
+    "cross-env": "^7.0.3",
+    "cross-spawn": "^7.0.3",
+    "eslint": "7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-flowtype": "^5.10.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-vue": "^7.20.0",
+    "execa": "^5.1.1",
+    "flow-bin": "0.139.0",
+    "gitpkg": "^1.0.0-beta.2",
+    "husky": "^4.3.8",
+    "jest-cli": "^26.6.3",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "prettier --write"
+    ]
+  },
+  "peerDependencies": {
+    "eslint": ">=5.16.0",
+    "flow-bin": ">=0.93.0"
+  },
+  "engines": {
+    "node": ">=4.x",
+    "npm": ">=5.x"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": 10
+          },
+          "useBuiltIns": "usage",
+          "corejs": 3
+        }
+      ],
+      "@babel/preset-flow"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb-base",
+      "prettier",
+      "prettier/flowtype"
+    ],
+    "parser": "babel-eslint",
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "plugins": [
+      "flowtype",
+      "prettier"
+    ],
+    "rules": {
+      "consistent-return": "off",
+      "flowtype/define-flow-type": "error",
+      "fp/no-arguments": "off",
+      "fp/no-class": "off",
+      "fp/no-delete": "off",
+      "fp/no-events": "off",
+      "fp/no-get-set": "off",
+      "fp/no-let": "off",
+      "fp/no-loops": "off",
+      "fp/no-mutating-assign": "off",
+      "fp/no-mutating-methods": "off",
+      "fp/no-mutation": "off",
+      "fp/no-nil": "off",
+      "fp/no-proxy": "off",
+      "fp/no-rest-parameters": "off",
+      "fp/no-this": "off",
+      "fp/no-throw": "off",
+      "fp/no-unused-expression": "off",
+      "fp/no-valueof-field": "off",
+      "prefer-destructuring": "off"
+    }
+  },
+  "renovate": {
+    "extends": [
+      "bliss"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test"
+    }
+  }
+}
